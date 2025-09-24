@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Abroad Guide for Pakistani Students: Denmark, Finland & Ireland</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .metric-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .rating-bar-bg {
+            background-color: #e5e7eb;
+            border-radius: 0.25rem;
+            height: 8px;
+            width: 100%;
+        }
+        .rating-bar {
+            background-color: #10b981;
+            border-radius: 0.25rem;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <h1 class="text-3xl font-bold text-slate-900">Study Abroad Infographic</h1>
+            <p class="text-md text-slate-600">A Comparative Guide for Pakistani Students: Denmark, Finland & Ireland</p>
+        </div>
+    </header>
+
+    <nav class="sticky-nav bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-center space-x-6">
+            <a href="#comparison" class="text-slate-700 hover:text-emerald-600 font-medium">Comparison</a>
+            <a href="#denmark" class="text-slate-700 hover:text-emerald-600 font-medium">Denmark</a>
+            <a href="#finland" class="text-slate-700 hover:text-emerald-600 font-medium">Finland</a>
+            <a href="#ireland" class="text-slate-700 hover:text-emerald-600 font-medium">Ireland</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-6">
+
+        <section id="comparison" class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-center">Country-wise Comparative Analysis</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-center text-slate-600 mb-6">This chart provides a high-level comparison of key factors for studying abroad. The larger the area for a country, the more favorable the conditions for that metric. Ireland shows strong job opportunities, while Finland offers higher safety and social inclusion. Denmark presents a balance of both.</p>
+                <div class="chart-container mx-auto">
+                    <canvas id="countryComparisonChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <div id="country-sections">
+            
+            <section id="denmark" class="mb-12">
+                <h2 class="text-3xl font-bold mb-2 text-center">Denmark 🇩🇰</h2>
+                <p class="text-lg text-slate-500 mb-6 text-center">Structured, innovative, with a strong focus on work-life balance.</p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="metric-card lg:col-span-1">
+                        <h3 class="text-lg font-semibold mb-2">Avg. Annual Tuition Fee</h3>
+                        <p class="text-3xl font-bold text-emerald-600">€10,000 - €16,000</p>
+                        <p class="text-sm text-slate-500 mt-2">For non-EU/EEA students</p>
+                    </div>
+                    <div class="metric-card lg:col-span-1">
+                        <h3 class="text-lg font-semibold mb-2">Avg. Monthly Living Cost</h3>
+                        <p class="text-3xl font-bold text-emerald-600">€900 - €1,200</p>
+                        <p class="text-sm text-slate-500 mt-2">Varies by city (Copenhagen is highest)</p>
+                    </div>
+                    <div class="metric-card lg:col-span-1">
+                        <h3 class="text-lg font-semibold mb-2">Visa Success Ratio (Est.)</h3>
+                        <p class="text-3xl font-bold text-emerald-600">~75-85%</p>
+                        <p class="text-sm text-slate-500 mt-2">For complete & genuine applications</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3">
+                        <h3 class="text-xl font-bold mb-4">Ratings & Indicators</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-medium">Job Market Strength: 8/10</p>
+                                <div class="rating-bar-bg"><div class="rating-bar" style="width: 80%;"></div></div>
+                            </div>
+                            <div>
+                                <p class="font-medium">Racism & Social Inclusion: 7/10</p>
+                                <div class="rating-bar-bg"><div class="rating-bar" style="width: 70%; background-color: #f59e0b;"></div></div>
+                            </div>
+                            <div>
+                                <p class="font-medium">Safety & Support: 9/10</p>
+                                <div class="rating-bar-bg"><div class="rating-bar" style="width: 90%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-1 lg:col-span-1">
+                         <h3 class="text-xl font-bold mb-4">Monthly Cost Breakdown</h3>
+                         <div class="chart-container" style="height: 250px;">
+                            <canvas id="denmarkCostChart"></canvas>
+                         </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-1 lg:col-span-2">
+                        <h3 class="text-xl font-bold mb-4">Visa & Immigration Checklist</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700">
+                            <li><strong>Immigration Policy:</strong> Generally positive. Post-study work visa (Establishment Card) available, allowing graduates to seek work for up to 2 years.</li>
+                            <li><strong>Visa Fee:</strong> Approx. DKK 1,900 (~€255).</li>
+                            <li><strong>Key Rejection Reasons:</strong> Insufficient funds (proof of ~€1,000/month required), incomplete application, or lack of genuine student intent.</li>
+                            <li><strong>Advantages:</strong> High living standards, English proficiency is widespread, strong tech and green energy sectors.</li>
+                            <li><strong>Disadvantages:</strong> High cost of living, competitive job market for non-Danish speakers, accommodation can be difficult to find.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3">
+                        <h3 class="text-xl font-bold mb-4">Top Universities for International Students</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white">
+                                <thead class="bg-slate-100">
+                                    <tr>
+                                        <th class="py-2 px-4 text-left">University</th>
+                                        <th class="py-2 px-4 text-left">Popular International Programs</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4 font-medium">University of Copenhagen</td>
+                                        <td class="py-2 px-4">IT & Cognition, Computer Science, Economics, Climate Change</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4 font-medium">Technical University of Denmark (DTU)</td>
+                                        <td class="py-2 px-4">Engineering (Wind Energy, Environmental, Biotech), Computer Science</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 font-medium">Aarhus University</td>
+                                        <td class="py-2 px-4">Business Administration, Data Science, Molecular Biology</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="finland" class="mb-12">
+                <h2 class="text-3xl font-bold mb-2 text-center">Finland 🇫🇮</h2>
+                <p class="text-lg text-slate-500 mb-6 text-center">High-quality education, nature-centric, and a leading hub for technology.</p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                     <div class="metric-card lg:col-span-1">
+                        <h3 class="text-lg font-semibold mb-2">Avg. Annual Tuition Fee</h3>
+                        <p class="text-3xl font-bold text-emerald-600">€8,000 - €15,000</p>
+                        <p class="text-sm text-slate-500 mt-2">For non-EU/EEA students</p>
+                    </div>
+                    <div class="metric-card lg:col-span-1">
+                        <h3 class="text-lg font-semibold mb-2">Avg. Monthly Living Cost</h3>
+                        <p class="text-3xl font-bold text-emerald-600">€700 - €1,000</p>
+                        <p class="text-sm text-slate-500 mt-2">More affordable outside Helsinki</p>
+                    </div>
+                    <div class="metric-card lg:col-span-1">
+                        <h3 class="text-lg font-semibold mb-2">Visa Success Ratio (Est.)</h3>
+                        <p class="text-3xl font-bold text-emerald-600">~85-95%</p>
+                        <p class="text-sm text-slate-500 mt-2">Known for efficient processing (D-Visa)</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3">
+                        <h3 class="text-xl font-bold mb-4">Ratings & Indicators</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-medium">Job Market Strength: 7/10</p>
+                                <div class="rating-bar-bg"><div class="rating-bar" style="width: 70%; background-color: #f59e0b;"></div></div>
+                            </div>
+                            <div>
+                                <p class="font-medium">Racism & Social Inclusion: 8/10</p>
+                                <div class="rating-bar-bg"><div class="rating-bar" style="width: 80%;"></div></div>
+                            </div>
+                            <div>
+                                <p class="font-medium">Safety & Support: 10/10</p>
+                                <div class="rating-bar-bg"><div class="rating-bar" style="width: 100%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-1 lg:col-span-1">
+                         <h3 class="text-xl font-bold mb-4">Monthly Cost Breakdown</h3>
+                         <div class="chart-container" style="height: 250px;">
+                            <canvas id="finlandCostChart"></canvas>
+                         </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-1 lg:col-span-2">
+                        <h3 class="text-xl font-bold mb-4">Visa & Immigration Checklist</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700">
+                            <li><strong>Immigration Policy:</strong> Very favorable. Introduction of D-Visa for fast-track entry. Post-study work visa extended to 2 years.</li>
+                            <li><strong>Visa Fee:</strong> Approx. €350 (Online) / €450 (Paper).</li>
+                            <li><strong>Key Rejection Reasons:</strong> Insufficient funds (proof of €560/month required), questionable documents, poor interview performance.</li>
+                            <li><strong>Advantages:</strong> High-quality & research-oriented education, safe and clean environment, strong gaming and mobile tech industry.</li>
+                            <li><strong>Disadvantages:</strong> Finnish language is crucial for long-term career success, can be socially reserved, colder climate.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3">
+                        <h3 class="text-xl font-bold mb-4">Top Universities for International Students</h3>
+                        <div class="overflow-x-auto">
+                           <table class="min-w-full bg-white">
+                                <thead class="bg-slate-100">
+                                    <tr>
+                                        <th class="py-2 px-4 text-left">University</th>
+                                        <th class="py-2 px-4 text-left">Popular International Programs</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4 font-medium">Aalto University</td>
+                                        <td class="py-2 px-4">Art & Design, Technology, Business, Game Design & Development</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4 font-medium">University of Helsinki</td>
+                                        <td class="py-2 px-4">Data Science, Environmental Sciences, Food Sciences, Education</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 font-medium">Tampere University</td>
+                                        <td class="py-2 px-4">Automation Engineering, Computing Sciences, Social Sciences</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="ireland" class="mb-12">
+                <h2 class="text-3xl font-bold mb-2 text-center">Ireland 🇮🇪</h2>
+                <p class="text-lg text-slate-500 mb-6 text-center">English-speaking, dynamic tech hub with strong ties to the US and UK.</p>
+
+                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                     <div class="metric-card lg:col-span-1">
+                        <h3 class="text-lg font-semibold mb-2">Avg. Annual Tuition Fee</h3>
+                        <p class="text-3xl font-bold text-emerald-600">€12,000 - €25,000</p>
+                        <p class="text-sm text-slate-500 mt-2">Can be higher for specialized courses</p>
+                    </div>
+                    <div class="metric-card lg:col-span-1">
+                        <h3 class="text-lg font-semibold mb-2">Avg. Monthly Living Cost</h3>
+                        <p class="text-3xl font-bold text-emerald-600">€1,000 - €1,500</p>
+                        <p class="text-sm text-slate-500 mt-2">Dublin has a severe housing crisis</p>
+                    </div>
+                    <div class="metric-card lg:col-span-1">
+                        <h3 class="text-lg font-semibold mb-2">Visa Success Ratio (Est.)</h3>
+                        <p class="text-3xl font-bold text-emerald-600">~80-90%</p>
+                        <p class="text-sm text-slate-500 mt-2">Requires significant financial proof upfront</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3">
+                        <h3 class="text-xl font-bold mb-4">Ratings & Indicators</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-medium">Job Market Strength: 9/10</p>
+                                <div class="rating-bar-bg"><div class="rating-bar" style="width: 90%;"></div></div>
+                            </div>
+                            <div>
+                                <p class="font-medium">Racism & Social Inclusion: 8/10</p>
+                                <div class="rating-bar-bg"><div class="rating-bar" style="width: 80%;"></div></div>
+                            </div>
+                            <div>
+                                <p class="font-medium">Safety & Support: 8/10</p>
+                                <div class="rating-bar-bg"><div class="rating-bar" style="width: 80%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-1 lg:col-span-1">
+                         <h3 class="text-xl font-bold mb-4">Monthly Cost Breakdown</h3>
+                         <div class="chart-container" style="height: 250px;">
+                            <canvas id="irelandCostChart"></canvas>
+                         </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-1 lg:col-span-2">
+                        <h3 class="text-xl font-bold mb-4">Visa & Immigration Checklist</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700">
+                            <li><strong>Immigration Policy:</strong> Strong. Post-study work visa (Stamp 1G) allows 1 year for Bachelor's and 2 years for Master's/PhD grads to find work.</li>
+                            <li><strong>Visa Fee:</strong> €60 + VFS charges.</li>
+                            <li><strong>Key Rejection Reasons:</strong> Insufficient funds (must show access to €10,000+ per year), gaps in education history, weak statement of purpose.</li>
+                            <li><strong>Advantages:</strong> European headquarters for many top tech/pharma companies (Google, Apple, Pfizer), English-speaking, vibrant culture.</li>
+                            <li><strong>Disadvantages:</strong> Extremely high cost of living and severe accommodation crisis, particularly in Dublin. Highly competitive job market.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2 lg:col-span-3">
+                        <h3 class="text-xl font-bold mb-4">Top Universities for International Students</h3>
+                        <div class="overflow-x-auto">
+                           <table class="min-w-full bg-white">
+                                <thead class="bg-slate-100">
+                                    <tr>
+                                        <th class="py-2 px-4 text-left">University</th>
+                                        <th class="py-2 px-4 text-left">Popular International Programs</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4 font-medium">Trinity College Dublin (TCD)</td>
+                                        <td class="py-2 px-4">Computer Science, Business Analytics, Law, International Management</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4 font-medium">University College Dublin (UCD)</td>
+                                        <td class="py-2 px-4">Data Analytics, Engineering, Business, Food Science</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 font-medium">University College Cork (UCC)</td>
+                                        <td class="py-2 px-4">Pharmaceutical Sciences, Sustainable Energy, Computing Science</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer class="bg-slate-800 text-white mt-12 py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Study Abroad Advisory. Data compiled for informational purposes.</p>
+            <p class="text-sm text-slate-400 mt-2">Source Reliability: Data is aggregated from official university and government immigration sites (Reliability: 9/10), supplemented with recent student feedback from verified online forums (Reliability: 7/10) to provide a comprehensive view.</p>
+        </div>
+    </footer>
+
+    <script>
+        const vibrantPalette = {
+            blue: '#3b82f6',
+            emerald: '#10b981',
+            amber: '#f59e0b',
+            slate: '#64748b',
+            lightBlue: '#bfdbfe',
+            lightEmerald: '#a7f3d0'
+        };
+
+        const tooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        new Chart(document.getElementById('countryComparisonChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Job Market', 'Low Cost', ['Social', 'Inclusion'], 'Safety', 'Visa Ease'],
+                datasets: [
+                    {
+                        label: 'Denmark',
+                        data: [8, 5, 7, 9, 7],
+                        backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                        borderColor: vibrantPalette.amber,
+                        pointBackgroundColor: vibrantPalette.amber,
+                    },
+                    {
+                        label: 'Finland',
+                        data: [7, 7, 8, 10, 9],
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: vibrantPalette.blue,
+                        pointBackgroundColor: vibrantPalette.blue,
+                    },
+                    {
+                        label: 'Ireland',
+                        data: [9, 4, 8, 8, 8],
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                        borderColor: vibrantPalette.emerald,
+                        pointBackgroundColor: vibrantPalette.emerald,
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                        pointLabels: { font: { size: 14 } },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                },
+                ...tooltipConfig
+            }
+        });
+
+        function createDoughnutChart(canvasId, data, labels) {
+            new Chart(document.getElementById(canvasId), {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: [vibrantPalette.blue, vibrantPalette.emerald, vibrantPalette.amber, vibrantPalette.slate],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: tooltipConfig.plugins.tooltip
+                    }
+                }
+            });
+        }
+        
+        createDoughnutChart('denmarkCostChart', [450, 250, 150, 150], ['Rent', 'Food', 'Transport', 'Other']);
+        createDoughnutChart('finlandCostChart', [350, 200, 100, 150], ['Rent', 'Food', 'Transport', 'Other']);
+        createDoughnutChart('irelandCostChart', [700, 250, 150, 200], [['Accommodation', '(Shared)'], 'Food', 'Transport', 'Other']);
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
