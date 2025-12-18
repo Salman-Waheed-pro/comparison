@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Abroad Strategy: The "Stepping Stone" Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .toggle-btn {
+            position: relative;
+            display: inline-flex;
+            height: 1.75rem;
+            width: 3rem;
+            align-items: center;
+            border-radius: 9999px;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+        .toggle-btn-active {
+            background-color: #2563eb;
+        }
+        .toggle-btn-inactive {
+            background-color: #d1d5db;
+        }
+        .toggle-knob {
+            display: inline-block;
+            height: 1.25rem;
+            width: 1.25rem;
+            transform: translateX(0);
+            border-radius: 9999px;
+            background-color: white;
+            transition: transform 0.2s;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+        .toggle-knob-active {
+            transform: translateX(1.5rem);
+        }
+        .toggle-knob-inactive {
+            transform: translateX(0.25rem);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-blue-600 hover:text-blue-800 font-medium flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                Back to Country Comparison
+            </a>
+            <span class="text-sm text-slate-500">Page 2 of 2</span>
+        </div>
+    </nav>
+
+    <div class="p-4 md:p-6">
+        <!-- Header -->
+        <header class="mb-8 max-w-7xl mx-auto border-b border-slate-200 pb-6">
+            <h1 class="text-3xl font-extrabold text-slate-900 flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                Study Abroad Strategy: The "Stepping Stone" Report
+            </h1>
+            <p class="text-slate-600 mt-2 text-lg">
+                Client Profile: DPT Graduate • Budget: <span id="budget-display" class="font-bold text-emerald-600">€15,000</span> • Goal: Max ROI/Settlement
+            </p>
+        </header>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 gap-8">
+            
+            <!-- TOP ROW: Controls -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Budget Simulator -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-center">
+                    <h2 class="text-lg font-semibold flex items-center gap-2 mb-4 text-slate-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+                        Budget Simulator
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between text-sm font-medium">
+                            <span>Total Budget Limit</span>
+                            <span id="budget-value" class="text-emerald-600 text-lg font-bold">€15,000</span>
+                        </div>
+                        <input 
+                            type="range" 
+                            id="budget-slider"
+                            min="5000" 
+                            max="35000" 
+                            step="1000"
+                            value="15000" 
+                            class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                        />
+                        <p class="text-xs text-slate-500">
+                            Move slider to check affordability. Countries below will update instantly.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Scholarship Toggle -->
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 flex flex-col justify-center">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-semibold text-blue-900 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                            Scholarship Scenario
+                        </h2>
+                        <button 
+                            id="scholarship-toggle"
+                            class="toggle-btn toggle-btn-inactive"
+                        >
+                            <span class="toggle-knob toggle-knob-inactive"></span>
+                        </button>
+                    </div>
+                    <p id="scholarship-status" class="text-sm text-blue-800 leading-relaxed">
+                        INACTIVE: Showing standard "Self-Finance" costs without aid.
+                    </p>
+                </div>
+            </div>
+
+            <!-- MIDDLE ROW: Destination Selection -->
+            <div>
+                <h3 class="text-sm uppercase text-slate-500 font-bold tracking-wider mb-3">Select Destination to Analyze</h3>
+                <div id="country-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+                    <!-- Countries will be rendered here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- BOTTOM ROW: Detailed View -->
+            <div id="detail-panel" class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+                <!-- Detail content will be rendered here by JavaScript -->
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // --- Data Models ---
+        const countries = [
+            {
+                id: 'italy',
+                name: 'Italy',
+                status: 'RECOMMENDED',
+                strategy: 'Stepping Stone',
+                flag: '🇮🇹',
+                color: 'emerald',
+                tuition: 156,
+                living: 10000,
+                visaCost: 500,
+                visaTime: '3-6 Months',
+                prTime: '5-10 Years',
+                citizenshipTime: '10 Years',
+                jobMarket: 'Difficult without Italian. Physio recognition takes 1-2 years.',
+                social: 'High bureaucracy (Permesso delays). Southern cities very affordable.',
+                verdict: 'Safest financial bet. Use it to get a degree, then move.',
+                programs: [
+                    { name: 'MSc Rehabilitation Professions', uni: 'University of Padua', url: 'https://www.unipd.it/en/educational-offer/second-cycle-degree/school-medicine-and-surgery?tipo=LM&scuola=ME&ordinamento=2023&key=ME2491' },
+                    { name: 'MSc Medical Biotechnology', uni: 'University of Milan', url: 'https://www.unimi.it/en/education/medical-biotechnology-and-molecular-medicine' },
+                    { name: 'MSc Clinical Psychosexology', uni: 'Sapienza University Rome', url: 'https://corsidilaurea.uniroma1.it/en/corso/2023/30853/home' }
+                ],
+                scholarships: [
+                    { name: 'DSU Regional Grant (Lazio)', amount: '€7,000 + Fees + Meals', url: 'http://www.laziodisco.it/' },
+                    { name: 'DSU Regional Grant (Lombardy)', amount: '€7,000 + Fees + Meals', url: 'https://www.unimi.it/en/study/financial-support/regional-scholarships' },
+                    { name: 'MAECI (Govt)', amount: '€900/month', url: 'https://studyinitaly.esteri.it/en/call-for-procedure' }
+                ]
+            },
+            {
+                id: 'hungary',
+                name: 'Hungary',
+                status: 'RECOMMENDED',
+                strategy: 'Zero Cost Backup',
+                flag: '🇭🇺',
+                color: 'blue',
+                tuition: 0,
+                living: 1000, 
+                visaCost: 100,
+                visaTime: '2-3 Months',
+                prTime: '3-5 Years',
+                citizenshipTime: '8 Years',
+                jobMarket: 'Small market. Low wages compared to West EU.',
+                social: 'Good student life in Budapest. Language is very hard.',
+                verdict: 'Best risk-free entry. Apply before Jan 15.',
+                programs: [
+                    { name: 'MSc Public Health', uni: 'University of Debrecen', url: 'https://edu.unideb.hu/p/public-health-msc' },
+                    { name: 'MSc Physiotherapy', uni: 'Semmelweis University', url: 'https://semmelweis.hu/english/education/english-language-program/physiotherapy-msc/' },
+                    { name: 'MSc Health Policy', uni: 'Eötvös Loránd University', url: 'https://www.elte.hu/en/health-policy-planning-and-financing-msc' }
+                ],
+                scholarships: [
+                    { name: 'Stipendium Hungaricum', amount: 'Full Ride + €110/mo', url: 'https://stipendiumhungaricum.hu/' },
+                    { name: 'Hungarian Diaspora Scholarship', amount: 'Full Ride', url: 'https://diasporascholarship.hu/' }
+                ]
+            },
+            {
+                id: 'finland',
+                name: 'Finland',
+                status: 'CONDITIONAL',
+                strategy: 'High Reward / High Risk',
+                flag: '🇫🇮',
+                color: 'amber',
+                tuition: 10000,
+                living: 9600,
+                visaCost: 500,
+                visaTime: '1-2 Months',
+                prTime: '4 Years',
+                citizenshipTime: '4-5 Years (Fastest)',
+                jobMarket: 'Hidden job market. Networking key. Delivery jobs common.',
+                social: 'Introverted culture. Safe. High quality of life.',
+                verdict: 'Only viable if you win the full scholarship. Otherwise too expensive.',
+                programs: [
+                    { name: 'Master of Public Health', uni: 'University of Eastern Finland', url: 'https://www.uef.fi/en/degree-programme/master-of-public-health' },
+                    { name: 'MSc Public Health', uni: 'Tampere University', url: 'https://www.tuni.fi/en/study-with-us/public-health' },
+                    { name: 'MSc Health Sciences', uni: 'University of Oulu', url: 'https://www.oulu.fi/en/apply/masters-health-sciences' }
+                ],
+                scholarships: [
+                    { name: 'Finland Scholarship', amount: '100% Fee + €5000 Grant', url: 'https://www.studyinfinland.fi/scholarships/finland-scholarship' },
+                    { name: 'UEF Tuition Waiver', amount: '50-100% Tuition Only', url: 'https://www.uef.fi/en/tuition-fees-and-scholarships' }
+                ]
+            },
+            {
+                id: 'germany',
+                name: 'Germany',
+                status: 'EXCLUDED',
+                reason: 'Visa Wait > 12 Months',
+                flag: '🇩🇪',
+                color: 'gray',
+                tuition: 300,
+                living: 11904,
+                visaCost: 75,
+                visaTime: '>12 Months',
+                verdict: 'Visa appointment unavailability in Pakistan makes this impossible for 2025/26.',
+                programs: [
+                    { name: 'MSc International Health', uni: 'Heidelberg University', url: 'https://www.klinikum.uni-heidelberg.de/heidelberger-institute-of-global-health/teaching/master-of-science-in-international-health' },
+                    { name: 'MSc Public Health', uni: 'Charité Berlin', url: 'https://bsph.charite.de/en/academic_programs/master_of_science_public_health/' },
+                    { name: 'MSc Health Economics', uni: 'University of Cologne', url: 'https://wiso.uni-koeln.de/en/studies/master/master-health-economics' }
+                ],
+                scholarships: [
+                    { name: 'DAAD EPOS', amount: 'Full Ride + €850/mo', url: 'https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=&origin=&subjectGrps=&daad=&q=&page=1&detail=50076777' },
+                    { name: 'Deutschlandstipendium', amount: '€300/mo', url: 'https://www.deutschlandstipendium.de/deutschlandstipendium/de/home/home_node.html' }
+                ]
+            },
+            {
+                id: 'netherlands',
+                name: 'Netherlands',
+                status: 'EXCLUDED',
+                reason: 'Costs > €30k',
+                flag: '🇳🇱',
+                color: 'gray',
+                tuition: 16000,
+                living: 14600,
+                visaCost: 200,
+                visaTime: '1-3 Months',
+                verdict: 'Tuition and IND living proof requirements are double your budget.',
+                programs: [
+                    { name: 'MSc Public Health', uni: 'Maastricht University', url: 'https://www.maastrichtuniversity.nl/education/master/master-public-health' },
+                    { name: 'MSc Health Sciences', uni: 'University of Twente', url: 'https://www.utwente.nl/en/education/master/programmes/health-sciences/' },
+                    { name: 'MSc Vitality & Ageing', uni: 'Leiden University', url: 'https://www.universiteitleiden.nl/en/education/study-programmes/master/vitality-and-ageing' }
+                ],
+                scholarships: [
+                    { name: 'NL Scholarship (Holland)', amount: '€5,000 (One off)', url: 'https://www.studyinnl.org/finances/nl-scholarship' },
+                    { name: 'Maastricht High Potential', amount: 'Full Tuition + Living', url: 'https://www.maastrichtuniversity.nl/support/your-studies-begin/finances/scholarships/um-holland-high-potential-scholarship' }
+                ]
+            },
+            {
+                id: 'sweden',
+                name: 'Sweden',
+                status: 'EXCLUDED',
+                reason: 'Costs > €23k',
+                flag: '🇸🇪',
+                color: 'gray',
+                tuition: 13000,
+                living: 10000,
+                visaCost: 150,
+                visaTime: '2-5 Months',
+                verdict: 'High tuition + strict living cost proof exceeds €15k limit.',
+                programs: [
+                    { name: 'MSc Public Health', uni: 'Lund University', url: 'https://www.lunduniversity.lu.se/lubas/i-uoh-lu-MAPHS' },
+                    { name: 'MSc Global Health', uni: 'Karolinska Institutet', url: 'https://education.ki.se/programme/4gl20-master-programme-in-global-health' },
+                    { name: 'MSc Health Economics', uni: 'University of Gothenburg', url: 'https://www.gu.se/en/study-gothenburg/master-programme-in-health-economics-management-and-policy-s2hmp' }
+                ],
+                scholarships: [
+                    { name: 'SI Scholarship for Global Professionals', amount: 'Full Coverage', url: 'https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/' },
+                    { name: 'Lund Global Scholarship', amount: '25-100% Tuition', url: 'https://www.lunduniversity.lu.se/admissions/bachelors-and-masters-studies/scholarships-and-awards/lund-university-global-scholarship' }
+                ]
+            },
+            {
+                id: 'newzealand',
+                name: 'New Zealand',
+                status: 'EXCLUDED',
+                reason: 'Costs > €31k',
+                flag: '🇳🇿',
+                color: 'gray',
+                tuition: 20000,
+                living: 11000,
+                visaCost: 300,
+                visaTime: '1-2 Months',
+                verdict: 'Extremely high costs. High visa rejection rate for non-funded applicants.',
+                programs: [
+                    { name: 'Master of Health Practice', uni: 'University of Auckland', url: 'https://www.auckland.ac.nz/en/study/study-options/find-a-study-option/master-of-health-practice-mhealthprac.html' },
+                    { name: 'Master of Public Health', uni: 'University of Otago', url: 'https://www.otago.ac.nz/courses/qualifications/mph.html' },
+                    { name: 'Master of Health Sciences', uni: 'University of Canterbury', url: 'https://www.canterbury.ac.nz/study/qualifications-and-courses/masters-degrees/master-of-health-sciences' }
+                ],
+                scholarships: [
+                    { name: 'Manaaki New Zealand', amount: 'Full Ride', url: 'https://www.nzscholarships.govt.nz/' },
+                    { name: 'University of Auckland Int. Excellence', amount: 'NZ$10,000', url: 'https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship.html' }
+                ]
+            },
+        ];
+
+        // State
+        let selectedCountryId = 'italy';
+        let scholarshipMode = false;
+        let userBudget = 15000;
+
+        // Currency formatter
+        const formatCurrency = (value) => 
+            new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
+
+        // Scholarship grant amounts (in EUR)
+        const SCHOLARSHIP_GRANTS = {
+            FINLAND_GRANT: 5000,        // Finland Scholarship living grant
+            HUNGARY_LIVING_AFTER_STIPENDIUM: 1000, // Remaining living costs after Stipendium Hungaricum
+            ITALY_DSU_GRANT: 7000       // DSU Regional Grant amount
+        };
+
+        // Dynamic Cost Calculation based on Scholarship Toggle
+        const calculateCosts = (country) => {
+            let t = country.tuition;
+            let l = country.living;
+            let v = country.visaCost;
+            
+            // Logic for Scholarship Impact
+            if (scholarshipMode) {
+                if (country.id === 'finland') {
+                    t = 0; // Full tuition waiver
+                    l = Math.max(0, l - SCHOLARSHIP_GRANTS.FINLAND_GRANT);
+                } else if (country.id === 'hungary') {
+                    t = 0; // Stipendium Hungaricum covers tuition
+                    l = SCHOLARSHIP_GRANTS.HUNGARY_LIVING_AFTER_STIPENDIUM;
+                } else if (country.id === 'italy') {
+                    t = 0; // DSU covers tuition fees
+                    l = Math.max(0, l - SCHOLARSHIP_GRANTS.ITALY_DSU_GRANT);
+                }
+            }
+
+            return {
+                total: t + l + v,
+                tuition: t,
+                living: l,
+                visa: v
+            };
+        };
+
+        // Render country grid
+        const renderCountryGrid = () => {
+            const grid = document.getElementById('country-grid');
+            grid.innerHTML = countries.map(country => {
+                const costs = calculateCosts(country);
+                const isAffordable = costs.total <= userBudget;
+                const isExcluded = country.status === 'EXCLUDED';
+                const isSelected = selectedCountryId === country.id;
+                
+                return `
+                    <button
+                        onclick="selectCountry('${country.id}')"
+                        class="relative p-3 rounded-lg border text-left transition-all h-full flex flex-col justify-between
+                            ${isSelected ? 'ring-2 ring-blue-500 bg-white shadow-lg z-10' : 'bg-white hover:bg-slate-50 border-slate-200'}
+                            ${!isAffordable ? 'border-red-100' : ''}"
+                    >
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-2xl">${country.flag}</span>
+                                ${isSelected ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>' : ''}
+                            </div>
+                            <div class="font-bold text-sm leading-tight mb-1 text-slate-900">
+                                ${country.name}
+                            </div>
+                            ${isExcluded ? '<span class="inline-block bg-gray-100 text-gray-800 text-[10px] px-1.5 py-0.5 rounded font-semibold mb-1">EXCLUDED</span>' : ''}
+                        </div>
+                        
+                        <div class="mt-2 border-t pt-2 border-dashed">
+                            <div class="text-[10px] font-bold uppercase ${isAffordable ? 'text-emerald-600' : 'text-red-600'}">
+                                ${isAffordable ? 'Fits Budget' : 'Over Budget'}
+                            </div>
+                            <div class="text-xs text-slate-500">
+                                ${formatCurrency(costs.total)}
+                            </div>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        };
+
+        // Render detail panel
+        const renderDetailPanel = () => {
+            const country = countries.find(c => c.id === selectedCountryId);
+            const costs = calculateCosts(country);
+            const isAffordable = costs.total <= userBudget;
+            
+            const colorMap = {
+                'emerald': 'bg-emerald-500',
+                'blue': 'bg-blue-500',
+                'amber': 'bg-amber-500',
+                'gray': 'bg-gray-500'
+            };
+
+            const panel = document.getElementById('detail-panel');
+            panel.innerHTML = `
+                <div class="h-2 w-full ${colorMap[country.color] || 'bg-slate-500'}"></div>
+                <div class="p-6 md:p-8">
+                    
+                    <!-- Title & Cost Summary -->
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-8 pb-8 border-b border-slate-100">
+                        <div>
+                            <h2 class="text-4xl font-extrabold text-slate-900 flex items-center gap-3 mb-2 flex-wrap">
+                                ${country.flag} ${country.name}
+                                ${country.status === 'RECOMMENDED' ? '<span class="bg-emerald-100 text-emerald-800 text-sm px-3 py-1 rounded-full font-bold tracking-wide">RECOMMENDED</span>' : ''}
+                                ${country.status === 'CONDITIONAL' ? '<span class="bg-amber-100 text-amber-800 text-sm px-3 py-1 rounded-full font-bold tracking-wide">CONDITIONAL</span>' : ''}
+                                ${country.status === 'EXCLUDED' ? '<span class="bg-red-100 text-red-800 text-sm px-3 py-1 rounded-full font-bold tracking-wide">EXCLUDED</span>' : ''}
+                            </h2>
+                            <p class="text-lg text-slate-600 font-medium">${country.strategy || country.reason}</p>
+                            ${country.status === 'EXCLUDED' ? `
+                                <div class="mt-3 text-red-600 font-semibold bg-red-50 inline-block px-3 py-1 rounded text-sm">
+                                    Reason: ${country.verdict}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="mt-4 md:mt-0 text-left md:text-right bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div class="text-sm text-slate-500 font-medium uppercase tracking-wider">Estimated 1st Year Cost</div>
+                            <div class="text-3xl font-extrabold my-1 ${isAffordable ? 'text-emerald-600' : 'text-red-600'}">
+                                ${formatCurrency(costs.total)}
+                            </div>
+                            <div class="text-xs text-slate-400">vs Budget: ${formatCurrency(userBudget)}</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Column 1: Financial & Legal -->
+                        <div class="space-y-6">
+                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                                <h3 class="font-bold text-slate-900 flex items-center gap-2 mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500"><circle cx="12" cy="12" r="8"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                                    Financial Breakdown
+                                </h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-slate-600">Tuition Fees</span>
+                                        <span class="font-semibold text-slate-900">${formatCurrency(costs.tuition)}</span>
+                                    </div>
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-slate-600">Living Expenses</span>
+                                        <span class="font-semibold text-slate-900">${formatCurrency(costs.living)}</span>
+                                    </div>
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-slate-600">Visa & Admin</span>
+                                        <span class="font-semibold text-slate-900">${formatCurrency(costs.visa)}</span>
+                                    </div>
+                                    <div class="pt-2 mt-2 border-t border-slate-200 flex justify-between text-sm font-bold">
+                                        <span>Total</span>
+                                        <span class="${isAffordable ? 'text-emerald-600' : 'text-red-600'}">
+                                            ${formatCurrency(costs.total)}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                                <h3 class="font-bold text-slate-900 flex items-center gap-2 mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    Visa & Settlement
+                                </h3>
+                                <div class="space-y-3 text-sm">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-600">Processing Time</span>
+                                        <span class="font-semibold ${country.visaTime.includes('>') ? 'text-red-600' : 'text-slate-900'}">${country.visaTime}</span>
+                                    </div>
+                                    ${country.prTime ? `
+                                        <div class="flex justify-between">
+                                            <span class="text-slate-600">PR Timeline</span>
+                                            <span class="font-semibold text-slate-900">${country.prTime}</span>
+                                        </div>
+                                    ` : ''}
+                                    ${country.citizenshipTime ? `
+                                        <div class="flex justify-between">
+                                            <span class="text-slate-600">Citizenship</span>
+                                            <span class="font-semibold text-slate-900">${country.citizenshipTime}</span>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: Programs & Scholarships -->
+                        <div class="lg:col-span-2 space-y-6">
+                            
+                            <!-- Programs Section -->
+                            <div>
+                                <h3 class="font-bold text-slate-900 flex items-center gap-2 mb-3 border-b border-slate-100 pb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                                    Top English-Taught Programs (DPT Profile)
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                                    ${country.programs ? country.programs.map(prog => `
+                                        <a 
+                                            href="${prog.url}" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            class="block p-3 rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all group"
+                                        >
+                                            <div class="flex items-start justify-between">
+                                                <span class="text-xs font-bold text-blue-600 uppercase mb-1 block">Master's</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 group-hover:text-blue-500"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                                            </div>
+                                            <div class="font-bold text-slate-800 text-sm leading-tight mb-1">${prog.name}</div>
+                                            <div class="text-xs text-slate-500">${prog.uni}</div>
+                                        </a>
+                                    `).join('') : ''}
+                                </div>
+                            </div>
+
+                            <!-- Scholarships Section -->
+                            <div>
+                                <h3 class="font-bold text-slate-900 flex items-center gap-2 mb-3 border-b border-slate-100 pb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                                    Available Scholarships
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    ${country.scholarships ? country.scholarships.map(sch => `
+                                        <a 
+                                            href="${sch.url}"
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            class="block p-3 rounded-lg border hover:shadow-md transition-all group flex items-center justify-between
+                                                ${scholarshipMode ? 'border-emerald-200 bg-emerald-50' : 'border-slate-200 bg-white'}"
+                                        >
+                                            <div>
+                                                <div class="font-bold text-slate-800 text-sm">${sch.name}</div>
+                                                <div class="text-xs text-slate-500 mt-1">${sch.amount}</div>
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 group-hover:text-emerald-600"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                                        </a>
+                                    `).join('') : ''}
+                                </div>
+                            </div>
+
+                            <!-- Reality Check -->
+                            <div class="bg-white p-4 rounded-lg border border-dashed border-slate-300 mt-4">
+                                <h3 class="text-sm font-bold text-slate-700 flex items-center gap-2 mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                    Social Reality Check
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                    <p class="text-slate-600"><span class="font-semibold text-slate-900">Job Market:</span> ${country.jobMarket || 'N/A'}</p>
+                                    <p class="text-slate-600"><span class="font-semibold text-slate-900">Social:</span> ${country.social || 'N/A'}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        // Select country handler
+        const selectCountry = (id) => {
+            selectedCountryId = id;
+            renderCountryGrid();
+            renderDetailPanel();
+        };
+
+        // Update budget display
+        const updateBudget = (value) => {
+            userBudget = value;
+            document.getElementById('budget-value').textContent = formatCurrency(value);
+            document.getElementById('budget-display').textContent = formatCurrency(value);
+            renderCountryGrid();
+            renderDetailPanel();
+        };
+
+        // Toggle scholarship mode
+        const toggleScholarship = () => {
+            scholarshipMode = !scholarshipMode;
+            const toggle = document.getElementById('scholarship-toggle');
+            const knob = toggle.querySelector('.toggle-knob');
+            const status = document.getElementById('scholarship-status');
+            
+            if (scholarshipMode) {
+                toggle.classList.remove('toggle-btn-inactive');
+                toggle.classList.add('toggle-btn-active');
+                knob.classList.remove('toggle-knob-inactive');
+                knob.classList.add('toggle-knob-active');
+                status.innerHTML = '<span class="font-semibold">ACTIVE: Applying DSU (Italy), Stipendium (Hungary), Finland Scholarship.</span>';
+            } else {
+                toggle.classList.remove('toggle-btn-active');
+                toggle.classList.add('toggle-btn-inactive');
+                knob.classList.remove('toggle-knob-active');
+                knob.classList.add('toggle-knob-inactive');
+                status.textContent = 'INACTIVE: Showing standard "Self-Finance" costs without aid.';
+            }
+            
+            renderCountryGrid();
+            renderDetailPanel();
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render initial state
+            renderCountryGrid();
+            renderDetailPanel();
+            
+            // Add event listeners
+            document.getElementById('budget-slider').addEventListener('input', (e) => {
+                updateBudget(Number(e.target.value));
+            });
+            
+            document.getElementById('scholarship-toggle').addEventListener('click', toggleScholarship);
+        });
+    </script>
+</body>
+</html>
